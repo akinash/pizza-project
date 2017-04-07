@@ -1,0 +1,33 @@
+# -*- coding: utf-8 -*-
+
+from django.test import TestCase
+
+# Create your tests here.
+from pizza_app.models import PizzaSize, PizzaIngredient, Address
+
+__author__ = 'sobolevn'
+
+
+class TestPizzaSize(TestCase):
+    def test_pizza_size_creation(self):
+        pizza_size = PizzaSize.objects.create(
+            size=PizzaSize.SMALL[0])
+        assert pizza_size.pk is not None
+
+
+class TestPizzaIngredient(TestCase):
+    @classmethod
+    def setUp(cls):
+        cls.address = Address.objects.create(
+            full='Russia, Moscow')
+
+    def test_pizza_create_ingredient(self):
+        ing = PizzaIngredient.objects.create(name='test')
+        assert ing.pk is not None
+
+    def test_pizza_get_ingredient(self):
+        ing = PizzaIngredient.objects.get(name='Ham')
+        assert ing is not None
+
+
+# TODO: add tests for PizzaOrder

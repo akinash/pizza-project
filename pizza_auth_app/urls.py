@@ -9,12 +9,13 @@ from pizza_auth_app.forms import CustomCreationForm
 urlpatterns = [
     url(r'^login/', login, {
         'template_name': 'auth_app/login.html',
+        # 'authentication_form': MyCustomForm,
     }, name='login'),
     url(r'^logout/', logout_then_login, name='logout'),
 
     url(r'^register/', CreateView.as_view(
         template_name='auth_app/register.html',
         form_class=CustomCreationForm,
-        success_url='/'
+        success_url='/',
     ), name='register'),
 ]

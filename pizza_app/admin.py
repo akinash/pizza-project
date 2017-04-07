@@ -9,4 +9,13 @@ class AddressAdmin(admin.ModelAdmin):
     list_display = ('id', 'full', )
 
 
+# PizzaIngridient
+# PizzaMenuItem
+# PizzaSize
+# PizzaOrder
+
+# list_display
+# search
+#
+
 admin.site.register(Address, AddressAdmin)

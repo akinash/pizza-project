@@ -29,7 +29,9 @@ class CustomAdminModel(UserAdmin):
     list_editable = (
         'favourite_pizza',
     )
-    list_filter = ('favourite_pizza__name', )
+    list_filter = (
+        'favourite_pizza__name',
+    )
     list_select_related = ('favourite_pizza', )
     search_fields = (
         'first_name',
