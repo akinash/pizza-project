@@ -20,6 +20,7 @@ from django.contrib import admin
 
 from pizza_app import urls as pizza_urls
 from pizza_auth_app import urls as auth_urls
+from rest_api_app import urls as rest_urls
 
 from pizza_app.views import index
 
@@ -28,6 +29,7 @@ urlpatterns = [
 
     url(r'^pizza/', include(pizza_urls, namespace='pizza')),
     url(r'^users/', include(auth_urls, namespace='auth_app')),
+    url(r'^api/', include(rest_urls, namespace='rest_app')),
 
     url(r'^$', index, name='index'),
 ]
