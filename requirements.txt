@@ -3,3 +3,4 @@ django-debug-toolbar
 pytz
 sqlparse
 wheel
+djangorestframework==3.5.3
