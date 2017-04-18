@@ -8,6 +8,7 @@ from django.utils import timezone
 from pizza_app.models import PizzaOrder, PizzaSize
 from pizza_app.forms import PizzaOrderForm, DeliveryForm
 
+from pizza_app.tasks import order_created
 
 # Create your views here.
 
@@ -36,6 +37,8 @@ def create(request):
                 delivery = delivery_from.save()
                 pizza = pizza_form.save(delivery=delivery)
                 pizza_form.save_m2m()
+
+            order_created.delay(pizza.pk)
 
             return redirect(reverse('pizza:view', kwargs={
                 'pizza_order_id': pizza.pk
